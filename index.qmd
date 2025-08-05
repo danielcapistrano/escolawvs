@@ -114,7 +114,7 @@ Despois de buscar na internet ou no repositório de APIs públicos, identifique 
 
 Antes de realizar qualquer coleta automatizada de dados na internet, é importante verificar os direitos de acesso outorgados pelos criadores do conteúdo. Websites utilizam como padrão um arquivo chamado `robots.txt` que contém informações sobre quais dados podem ser coletaods e como eles podem ser utilizados. 
 
-Aqui está o arquivo localizado no site da camara dos deputados:
+Aqui está o conteúdo do [arquivo](https://www.camara.leg.br/robots.txt) localizado no site da camara dos deputados:
 
 ```{r}
 camara_robots <- request("https://www.camara.leg.br/robots.txt") |> req_perform() |> resp_body_string()
@@ -179,7 +179,7 @@ map_dfr(links[1:5],~{
         data = pagina |> html_node(".g-artigo__data-hora") |> html_text2(),
         texto = pagina  |> html_node("#content-noticia")|> html_text2()
     ) |> 
-    mutate(texto = substr(texto, 1, 300))
+    mutate(texto = substr(texto, 1, 600))
 }) |> gt()
 
 
@@ -189,6 +189,8 @@ map_dfr(links[1:5],~{
 ::: {.callout-note collapse="true"}
 ## Exercício 3
 
-Identificar em grupo uma página que seja relevante para o grupo e pensar em formas de automatizar a coleta de dados. 
+- Aumentar o número de caracteres do texto da noticia de 600 para 1000.  
+- Adicionar uma coluna contendo o número de comentários de cada notícia  
+- Identificar uma página que seja relevante para o grupo e pensar em formas de automatizar a coleta de dados.  
 
 :::
