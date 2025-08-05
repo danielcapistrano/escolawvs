@@ -1,0 +1,192 @@
+---
+title: Acesso a dados com API e raspagem na web
+author: Daniel Capistrano
+format:
+  html:
+    embed-resources: true
+    number-sections: true
+    theme: cosmo
+    code-fold: true
+execute:
+  warning: false
+---
+
+# Acesso a dados estáticos
+
+A maneira mais usual de acessar dados secundários para pesquisa social é baixar um arquivo de dados (*dataset*) da pagina oficial dessa fonte.  
+
+A vantagem dessa estratégia é a garantia de que os dados tem origem oficial e, uma vez baixados, pode-se trabalhar com o arquivo sem necessariamente ter acesso a internet. Ainda é bastante usual que pesquisadores utilizem esse procedimento para transmitir dados que não são públicos. 
+
+Esse processo, no entanto, tem algumas limitações. Primeiramente, esse processo é ineficiente se o usuário gostaria de acessar apenas parte do arquivo de dados. Além disso, existe uma maior dificuldade de atualizar ou corrigir os dados necessitando constante controle de versão. 
+
+
+::: {.callout-note collapse="true"}
+## Exercício 1
+
+Acesse a [página oficial do WVS](https://www.worldvaluessurvey.org). Baixe os dados da onda 7 em formato do R (RDS) e SPSS (SAV). Abra os dois arquivos usando R. Existe alguma diferença entre os dois formatos?  
+
+:::
+
+# API
+
+APIs, da sigla em ingles para *application programming interface*, permitem acesso a dados de maneira mais dinamica e flexível. Trata-se basicamente de uma conexão entre dois computadores ou dois programas de computadores por meio de regras pré-definidas em relação a quais dados serão transmitidos. 
+
+![Image: Celeste Layne /A is for Application: API Basics](img/apianalogy.png){.lightbox}
+
+Em contraste com o acesso a dados estáticos, esses APIs permitem que os dados sejam atualizados/corrigidos regularmente e possam ser acessados de maneira mais eficiente. 
+
+## API Wrappers
+
+Antes de olhar como fazer requisições específicas usando API, é importante mencionar que diversos pacotes em R foram desenvolvidos para facilitar o acesso via API de maneira indireta, alguns exemplos:
+
+- European Social Survey: [`essurvey`](https://docs.ropensci.org/essurvey/)  
+- World Bank: [`wbstats`](http://gshs-ornl.github.io/wbstats/)    
+- Eurostat: [`eurostat`](https://ropengov.github.io/eurostat/articles/eurostat_tutorial.html)
+
+## Instalação de pacotes
+
+Vamos instalar o pacote [`httr2`](https://httr2.r-lib.org) que permite o acesso a APIs e tambem converter a resposta em dados estruturados para análise. 
+
+```{r}
+#| eval: false
+
+install.packages("httr2")
+```
+
+## Executar requisições
+
+
+### Camara dos Deputados 
+
+Vamos fazer uma requisição a base de dados da Camara dos Deputados: [https://dadosabertos.camara.leg.br](https://dadosabertos.camara.leg.br).
+
+
+Primeiramente, vamos criar um objeto com o endereço da base de dados
+
+```{r}
+api <- "https://dadosabertos.camara.leg.br/api/v2"
+```
+
+Seguindo a [documentação do API](https://dadosabertos.camara.leg.br/swagger/api.html?tab=api), vamos fazer uma requisição específica:  
+
+```{r}
+library(tidyverse)
+library(httr2)
+
+api_deputados  <- request(paste0(api, "/deputados"))
+
+resposta  <- 
+    api_deputados |> 
+    req_url_query(nome="Benedita da Silva")|> # siglaPartido="PV"
+    req_perform() |> 
+    resp_body_json(simplifyVector = TRUE)
+
+
+```
+
+Aqui vamos converter a resposta em um tabela:
+
+```{r}
+resposta |> pluck("dados") |> as_tibble()
+```
+
+
+## Recursos adicionais
+
+Repositório de APIs públicos:  [https://github.com/public-apis/public-apis](https://github.com/public-apis/public-apis)  
+
+API Wrappers para dados abertos governamentais: [https://ropengov.org/projects/](https://ropengov.org/projects/).  
+
+Acessar OpenAI  API: [https://www.marlycormar.com/posts/2024-05-14-access-openAI-API/](https://www.marlycormar.com/posts/2024-05-14-access-openAI-API/)  
+
+
+::: {.callout-note collapse="true"}
+## Exercício 2
+
+Despois de buscar na internet ou no repositório de APIs públicos, identifique um API que esteja relacionado com seu projeto de pesquisa.   
+
+:::
+
+# Raspagem de dados
+
+## Robots.txt
+
+Antes de realizar qualquer coleta automatizada de dados na internet, é importante verificar os direitos de acesso outorgados pelos criadores do conteúdo. Websites utilizam como padrão um arquivo chamado `robots.txt` que contém informações sobre quais dados podem ser coletaods e como eles podem ser utilizados. 
+
+Aqui está o arquivo localizado no site da camara dos deputados:
+
+```{r}
+camara_robots <- request("https://www.camara.leg.br/robots.txt") |> req_perform() |> resp_body_string()
+
+cat(camara_robots)
+```
+
+## Instalação de pacotes
+
+Além do pacote `httr2`, que pode ser utilizado para raspagem de dados, nós vamos utilizar o pacote [`rvest`](https://rvest.tidyverse.org) que foi desenvolvido especificamente para essa tarefa e possui algumas funcinalidades adicionais
+
+```{r}
+#| eval: false
+
+install.packages("rvest")
+```
+
+## Coletando dados
+
+Aqui vamos indicar o endereço da página que deve ser utilizada como referencia e baixar o conteúdo dessa pagina
+```{r}
+library(rvest)
+pagina <- read_html("https://www.camara.leg.br")
+
+```
+
+![Shamli Desai / Basic HTML Tags](img/htmltags.jpg)
+
+Gerando uma tabela com todos os titulos marcados como 'h3' e seus respectivos links.
+
+```{r}
+
+resultado <- 
+    pagina |> 
+        html_elements("h3") |> 
+        map_df(~{
+        link_node <- html_element(.x, "a")
+        tibble(
+            texto = html_text2(.x),
+            link = link_node |> html_attr("href") |> replace_na("") 
+        )
+    })
+
+resultado
+```
+
+Agora vamos acessar todos os links coletados na pagina principal e coletar as seguintes informações:
+
+- Titulo  
+- Data  
+- Texto   
+
+```{r}
+
+links <- resultado$link
+
+
+map_dfr(links[1:5],~{
+    pagina <- read_html(.x)
+    tibble(
+        titulo = pagina |> html_element("h1") |> html_text2(),
+        data = pagina |> html_node(".g-artigo__data-hora") |> html_text2(),
+        texto = pagina  |> html_node("#content-noticia")|> html_text2()
+    )
+})
+
+
+```
+
+
+::: {.callout-note collapse="true"}
+## Exercício 3
+
+Identificar em grupo uma página que seja relevante para o grupo e pensar em formas de automatizar a coleta de dados. 
+
+:::
