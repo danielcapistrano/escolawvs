@@ -2312,13 +2312,437 @@ Exercício 1
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>resposta <span class="sc">|&gt;</span> <span class="fu">pluck</span>(<span class="st">&quot;dados&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>resposta <span class="sc">|&gt;</span> <span class="fu">pluck</span>(<span class="st">&quot;dados&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 9
-     id uri    nome  siglaPartido uriPartido siglaUf idLegislatura urlFoto email
-  &lt;int&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;
-1 73701 https… Bene… PT           https://d… RJ                 57 https:… dep.…</code></pre>
+<div class="cell-output-display">
+<div id="yoarbdejwd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yoarbdejwd table {
+font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+#yoarbdejwd thead, #yoarbdejwd tbody, #yoarbdejwd tfoot, #yoarbdejwd tr, #yoarbdejwd td, #yoarbdejwd th {
+border-style: none;
+}
+#yoarbdejwd p {
+margin: 0;
+padding: 0;
+}
+#yoarbdejwd .gt_table {
+display: table;
+border-collapse: collapse;
+line-height: normal;
+margin-left: auto;
+margin-right: auto;
+color: #333333;
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+background-color: #FFFFFF;
+width: auto;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #A8A8A8;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #A8A8A8;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+}
+#yoarbdejwd .gt_caption {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+#yoarbdejwd .gt_title {
+color: #333333;
+font-size: 125%;
+font-weight: initial;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-color: #FFFFFF;
+border-bottom-width: 0;
+}
+#yoarbdejwd .gt_subtitle {
+color: #333333;
+font-size: 85%;
+font-weight: initial;
+padding-top: 3px;
+padding-bottom: 5px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-color: #FFFFFF;
+border-top-width: 0;
+}
+#yoarbdejwd .gt_heading {
+background-color: #FFFFFF;
+text-align: center;
+border-bottom-color: #FFFFFF;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#yoarbdejwd .gt_bottom_border {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#yoarbdejwd .gt_col_headings {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#yoarbdejwd .gt_col_heading {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 6px;
+padding-left: 5px;
+padding-right: 5px;
+overflow-x: hidden;
+}
+#yoarbdejwd .gt_column_spanner_outer {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 4px;
+padding-right: 4px;
+}
+#yoarbdejwd .gt_column_spanner_outer:first-child {
+padding-left: 0;
+}
+#yoarbdejwd .gt_column_spanner_outer:last-child {
+padding-right: 0;
+}
+#yoarbdejwd .gt_column_spanner {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 5px;
+overflow-x: hidden;
+display: inline-block;
+width: 100%;
+}
+#yoarbdejwd .gt_spanner_row {
+border-bottom-style: hidden;
+}
+#yoarbdejwd .gt_group_heading {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+text-align: left;
+}
+#yoarbdejwd .gt_empty_group_heading {
+padding: 0.5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: middle;
+}
+#yoarbdejwd .gt_from_md > :first-child {
+margin-top: 0;
+}
+#yoarbdejwd .gt_from_md > :last-child {
+margin-bottom: 0;
+}
+#yoarbdejwd .gt_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+margin: 10px;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+overflow-x: hidden;
+}
+#yoarbdejwd .gt_stub {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+}
+#yoarbdejwd .gt_stub_row_group {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+vertical-align: top;
+}
+#yoarbdejwd .gt_row_group_first td {
+border-top-width: 2px;
+}
+#yoarbdejwd .gt_row_group_first th {
+border-top-width: 2px;
+}
+#yoarbdejwd .gt_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#yoarbdejwd .gt_first_summary_row {
+border-top-style: solid;
+border-top-color: #D3D3D3;
+}
+#yoarbdejwd .gt_first_summary_row.thick {
+border-top-width: 2px;
+}
+#yoarbdejwd .gt_last_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#yoarbdejwd .gt_grand_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#yoarbdejwd .gt_first_grand_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-style: double;
+border-top-width: 6px;
+border-top-color: #D3D3D3;
+}
+#yoarbdejwd .gt_last_grand_summary_row_top {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: double;
+border-bottom-width: 6px;
+border-bottom-color: #D3D3D3;
+}
+#yoarbdejwd .gt_striped {
+background-color: rgba(128, 128, 128, 0.05);
+}
+#yoarbdejwd .gt_table_body {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#yoarbdejwd .gt_footnotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#yoarbdejwd .gt_footnote {
+margin: 0px;
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#yoarbdejwd .gt_sourcenotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#yoarbdejwd .gt_sourcenote {
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#yoarbdejwd .gt_left {
+text-align: left;
+}
+#yoarbdejwd .gt_center {
+text-align: center;
+}
+#yoarbdejwd .gt_right {
+text-align: right;
+font-variant-numeric: tabular-nums;
+}
+#yoarbdejwd .gt_font_normal {
+font-weight: normal;
+}
+#yoarbdejwd .gt_font_bold {
+font-weight: bold;
+}
+#yoarbdejwd .gt_font_italic {
+font-style: italic;
+}
+#yoarbdejwd .gt_super {
+font-size: 65%;
+}
+#yoarbdejwd .gt_footnote_marks {
+font-size: 75%;
+vertical-align: 0.4em;
+position: initial;
+}
+#yoarbdejwd .gt_asterisk {
+font-size: 100%;
+vertical-align: 0;
+}
+#yoarbdejwd .gt_indent_1 {
+text-indent: 5px;
+}
+#yoarbdejwd .gt_indent_2 {
+text-indent: 10px;
+}
+#yoarbdejwd .gt_indent_3 {
+text-indent: 15px;
+}
+#yoarbdejwd .gt_indent_4 {
+text-indent: 20px;
+}
+#yoarbdejwd .gt_indent_5 {
+text-indent: 25px;
+}
+#yoarbdejwd .katex-display {
+display: inline-flex !important;
+margin-bottom: 0.75em !important;
+}
+#yoarbdejwd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="id" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">id</th>
+<th id="uri" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">uri</th>
+<th id="nome" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">nome</th>
+<th id="siglaPartido" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">siglaPartido</th>
+<th id="uriPartido" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">uriPartido</th>
+<th id="siglaUf" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">siglaUf</th>
+<th id="idLegislatura" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">idLegislatura</th>
+<th id="urlFoto" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">urlFoto</th>
+<th id="email" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">email</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="id">73701</td>
+<td class="gt_row gt_left" headers="uri">https://dadosabertos.camara.leg.br/api/v2/deputados/73701</td>
+<td class="gt_row gt_left" headers="nome">Benedita da Silva</td>
+<td class="gt_row gt_left" headers="siglaPartido">PT</td>
+<td class="gt_row gt_left" headers="uriPartido">https://dadosabertos.camara.leg.br/api/v2/partidos/36844</td>
+<td class="gt_row gt_left" headers="siglaUf">RJ</td>
+<td class="gt_row gt_right" headers="idLegislatura">57</td>
+<td class="gt_row gt_left" headers="urlFoto">https://www.camara.leg.br/internet/deputado/bandep/73701.jpg</td>
+<td class="gt_row gt_left" headers="email">dep.beneditadasilva@camara.leg.br</td>
+</tr>
+</tbody>
+</table>
+
+</div>
 </div>
 </div>
 </section>
@@ -2355,9 +2779,9 @@ Exercício 2
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>camara_robots <span class="ot">&lt;-</span> <span class="fu">request</span>(<span class="st">&quot;https://www.camara.leg.br/robots.txt&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">req_perform</span>() <span class="sc">|&gt;</span> <span class="fu">resp_body_string</span>()</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(camara_robots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>camara_robots <span class="ot">&lt;-</span> <span class="fu">request</span>(<span class="st">&quot;https://www.camara.leg.br/robots.txt&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">req_perform</span>() <span class="sc">|&gt;</span> <span class="fu">resp_body_string</span>()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(camara_robots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>User-Agent: *
@@ -2386,7 +2810,7 @@ Disallow: /*crawl=no</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rvest&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rvest&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -2396,8 +2820,8 @@ Disallow: /*crawl=no</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>pagina <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;https://www.camara.leg.br&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pagina <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;https://www.camara.leg.br&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -2410,37 +2834,485 @@ Disallow: /*crawl=no</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    pagina <span class="sc">|&gt;</span> </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_elements</span>(<span class="st">&quot;h3&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">map_df</span>(<span class="sc">~</span>{</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        link_node <span class="ot">&lt;-</span> <span class="fu">html_element</span>(.x, <span class="st">&quot;a&quot;</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">tibble</span>(</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">texto =</span> <span class="fu">html_text2</span>(.x),</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">link =</span> link_node <span class="sc">|&gt;</span> <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">replace_na</span>(<span class="st">&quot;&quot;</span>) </span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>resultado</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    pagina <span class="sc">|&gt;</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">html_elements</span>(<span class="st">&quot;h3&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">map_df</span>(<span class="sc">~</span>{</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        link_node <span class="ot">&lt;-</span> <span class="fu">html_element</span>(.x, <span class="st">&quot;a&quot;</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">tibble</span>(</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">texto =</span> <span class="fu">html_text2</span>(.x),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">link =</span> link_node <span class="sc">|&gt;</span> <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">replace_na</span>(<span class="st">&quot;&quot;</span>) </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>resultado <span class="sc">|&gt;</span> <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 14 × 2
-   texto                                                                   link 
-   &lt;chr&gt;                                                                   &lt;chr&gt;
- 1 Deputados retomam votações nesta semana no Plenário e nas comissões     http…
- 2 Câmara declara a perda de mandato de sete deputados federais e convoca… http…
- 3 Hugo Motta: não podemos apoiar sanção de nações estrangeiras a membros… http…
- 4 A Voz do Brasil completa 90 anos marcando a comunicação pública brasil… http…
- 5 Sancionado incentivo fiscal a exportações por micro e pequenas empresas http…
- 6 Últimas Notícias                                                        http…
- 7 Evento discute desafios e oportunidades das negociações da agenda clim… http…
- 8 Câmara lança edital para escolher obras para a Agenda Cultural do próx… http…
- 9 Câmara lança livro sobre transformação digital nos estados brasileiros  http…
-10 Estão abertas as inscrições para concurso de vídeos sobre violência co… http…
-11 Sessão para a votação de propostas legislativas                         http…
-12 Sessão para a votação de propostas legislativas                         http…
-13 Sessão para a votação de propostas legislativas                         http…
-14 Comissão Geral para Debater a COP30 no Parlamento Brasileiro            http…</code></pre>
+<div class="cell-output-display">
+<div id="fwernzcxgm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fwernzcxgm table {
+font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+#fwernzcxgm thead, #fwernzcxgm tbody, #fwernzcxgm tfoot, #fwernzcxgm tr, #fwernzcxgm td, #fwernzcxgm th {
+border-style: none;
+}
+#fwernzcxgm p {
+margin: 0;
+padding: 0;
+}
+#fwernzcxgm .gt_table {
+display: table;
+border-collapse: collapse;
+line-height: normal;
+margin-left: auto;
+margin-right: auto;
+color: #333333;
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+background-color: #FFFFFF;
+width: auto;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #A8A8A8;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #A8A8A8;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+}
+#fwernzcxgm .gt_caption {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+#fwernzcxgm .gt_title {
+color: #333333;
+font-size: 125%;
+font-weight: initial;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-color: #FFFFFF;
+border-bottom-width: 0;
+}
+#fwernzcxgm .gt_subtitle {
+color: #333333;
+font-size: 85%;
+font-weight: initial;
+padding-top: 3px;
+padding-bottom: 5px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-color: #FFFFFF;
+border-top-width: 0;
+}
+#fwernzcxgm .gt_heading {
+background-color: #FFFFFF;
+text-align: center;
+border-bottom-color: #FFFFFF;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#fwernzcxgm .gt_bottom_border {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#fwernzcxgm .gt_col_headings {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#fwernzcxgm .gt_col_heading {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 6px;
+padding-left: 5px;
+padding-right: 5px;
+overflow-x: hidden;
+}
+#fwernzcxgm .gt_column_spanner_outer {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 4px;
+padding-right: 4px;
+}
+#fwernzcxgm .gt_column_spanner_outer:first-child {
+padding-left: 0;
+}
+#fwernzcxgm .gt_column_spanner_outer:last-child {
+padding-right: 0;
+}
+#fwernzcxgm .gt_column_spanner {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 5px;
+overflow-x: hidden;
+display: inline-block;
+width: 100%;
+}
+#fwernzcxgm .gt_spanner_row {
+border-bottom-style: hidden;
+}
+#fwernzcxgm .gt_group_heading {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+text-align: left;
+}
+#fwernzcxgm .gt_empty_group_heading {
+padding: 0.5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: middle;
+}
+#fwernzcxgm .gt_from_md > :first-child {
+margin-top: 0;
+}
+#fwernzcxgm .gt_from_md > :last-child {
+margin-bottom: 0;
+}
+#fwernzcxgm .gt_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+margin: 10px;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+overflow-x: hidden;
+}
+#fwernzcxgm .gt_stub {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+}
+#fwernzcxgm .gt_stub_row_group {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+vertical-align: top;
+}
+#fwernzcxgm .gt_row_group_first td {
+border-top-width: 2px;
+}
+#fwernzcxgm .gt_row_group_first th {
+border-top-width: 2px;
+}
+#fwernzcxgm .gt_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#fwernzcxgm .gt_first_summary_row {
+border-top-style: solid;
+border-top-color: #D3D3D3;
+}
+#fwernzcxgm .gt_first_summary_row.thick {
+border-top-width: 2px;
+}
+#fwernzcxgm .gt_last_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#fwernzcxgm .gt_grand_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#fwernzcxgm .gt_first_grand_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-style: double;
+border-top-width: 6px;
+border-top-color: #D3D3D3;
+}
+#fwernzcxgm .gt_last_grand_summary_row_top {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: double;
+border-bottom-width: 6px;
+border-bottom-color: #D3D3D3;
+}
+#fwernzcxgm .gt_striped {
+background-color: rgba(128, 128, 128, 0.05);
+}
+#fwernzcxgm .gt_table_body {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#fwernzcxgm .gt_footnotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#fwernzcxgm .gt_footnote {
+margin: 0px;
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#fwernzcxgm .gt_sourcenotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#fwernzcxgm .gt_sourcenote {
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#fwernzcxgm .gt_left {
+text-align: left;
+}
+#fwernzcxgm .gt_center {
+text-align: center;
+}
+#fwernzcxgm .gt_right {
+text-align: right;
+font-variant-numeric: tabular-nums;
+}
+#fwernzcxgm .gt_font_normal {
+font-weight: normal;
+}
+#fwernzcxgm .gt_font_bold {
+font-weight: bold;
+}
+#fwernzcxgm .gt_font_italic {
+font-style: italic;
+}
+#fwernzcxgm .gt_super {
+font-size: 65%;
+}
+#fwernzcxgm .gt_footnote_marks {
+font-size: 75%;
+vertical-align: 0.4em;
+position: initial;
+}
+#fwernzcxgm .gt_asterisk {
+font-size: 100%;
+vertical-align: 0;
+}
+#fwernzcxgm .gt_indent_1 {
+text-indent: 5px;
+}
+#fwernzcxgm .gt_indent_2 {
+text-indent: 10px;
+}
+#fwernzcxgm .gt_indent_3 {
+text-indent: 15px;
+}
+#fwernzcxgm .gt_indent_4 {
+text-indent: 20px;
+}
+#fwernzcxgm .gt_indent_5 {
+text-indent: 25px;
+}
+#fwernzcxgm .katex-display {
+display: inline-flex !important;
+margin-bottom: 0.75em !important;
+}
+#fwernzcxgm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="texto" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">texto</th>
+<th id="link" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">link</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="texto">Violência nas redes sociais e no ambiente virtual</td>
+<td class="gt_row gt_left" headers="link">https://www.camara.leg.br/evento-legislativo/77379</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="texto">Sessão para a votação de propostas legislativas</td>
+<td class="gt_row gt_left" headers="link">https://www.camara.leg.br/evento-legislativo/77363</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="texto">Sessão para a votação de propostas legislativas</td>
+<td class="gt_row gt_left" headers="link">https://www.camara.leg.br/evento-legislativo/77333</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="texto">Sessão para a votação de propostas legislativas</td>
+<td class="gt_row gt_left" headers="link">https://www.camara.leg.br/evento-legislativo/77294</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="texto">Deputados retomam votações nesta terça no Plenário e nas comissões</td>
+<td class="gt_row gt_left" headers="link">https://www.camara.leg.br/noticias/1184334-deputados-retomam-votacoes-nesta-semana-no-plenario-e-nas-comissoes/</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="texto">Câmara declara a perda de mandato de sete deputados federais e convoca novos eleitos</td>
+<td class="gt_row gt_left" headers="link">https://www.camara.leg.br/noticias/1184072-camara-declara-a-perda-de-mandato-de-sete-deputados-federais-e-convoca-novos-eleitos/</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="texto">Hugo Motta: não podemos apoiar sanção de nações estrangeiras a membros de qualquer Poder da República</td>
+<td class="gt_row gt_left" headers="link">https://www.camara.leg.br/noticias/1184045-hugo-motta-nao-podemos-apoiar-sancao-de-nacoes-estrangeiras-a-membros-de-qualquer-poder-da-republica/</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="texto">A Voz do Brasil completa 90 anos marcando a comunicação pública brasileira</td>
+<td class="gt_row gt_left" headers="link">https://www.camara.leg.br/noticias/1182848-a-voz-do-brasil-completa-90-anos-marcando-a-comunicacao-publica-brasileira/</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="texto">Nova lei libera recursos para investimentos de fundo científico e tecnológico</td>
+<td class="gt_row gt_left" headers="link">https://www.camara.leg.br/noticias/1184845-nova-lei-libera-recursos-para-investimentos-de-fundo-cientifico-e-tecnologico/</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="texto">Últimas Notícias</td>
+<td class="gt_row gt_left" headers="link">https://www.camara.leg.br/noticias/ultimas</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="texto">Evento discute desafios e oportunidades das negociações da agenda climática</td>
+<td class="gt_row gt_left" headers="link">https://www.camara.leg.br/assessoria-de-imprensa/1183563-camara-realiza-seminario-sobre-desafios-e-oportunidades-das-negociacoes-da-agenda-climatica/</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="texto">Câmara lança edital para escolher obras para a Agenda Cultural do próximo ano</td>
+<td class="gt_row gt_left" headers="link">https://www.camara.leg.br/assessoria-de-imprensa/1184406-camara-lanca-edital-para-selecao-de-projetos-de-exposicoes-artisticas-e-historicas-da-agenda-cultural-de-2026/</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="texto">Câmara lança livro sobre transformação digital nos estados brasileiros</td>
+<td class="gt_row gt_left" headers="link">https://www.camara.leg.br/assessoria-de-imprensa/1183977-camara-lanca-livro-sobre-transformacao-digital-nos-estados-brasileiros/</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="texto">Estão abertas as inscrições para concurso de vídeos sobre violência contra a mulher</td>
+<td class="gt_row gt_left" headers="link">https://www.camara.leg.br/assessoria-de-imprensa/1181401-camara-abre-inscricoes-para-concurso-de-videos-sobre-violencia-contra-a-mulher/</td>
+</tr>
+</tbody>
+</table>
+
+</div>
 </div>
 </div>
 <p>Agora vamos acessar todos os links coletados na pagina principal e coletar as seguintes informações:</p>
@@ -2454,27 +3326,454 @@ Disallow: /*crawl=no</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>links <span class="ot">&lt;-</span> resultado<span class="sc">$</span>link</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfr</span>(links[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="sc">~</span>{</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    pagina <span class="ot">&lt;-</span> <span class="fu">read_html</span>(.x)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">titulo =</span> pagina <span class="sc">|&gt;</span> <span class="fu">html_element</span>(<span class="st">&quot;h1&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">html_text2</span>(),</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> pagina <span class="sc">|&gt;</span> <span class="fu">html_node</span>(<span class="st">&quot;.g-artigo__data-hora&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">html_text2</span>(),</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">texto =</span> pagina  <span class="sc">|&gt;</span> <span class="fu">html_node</span>(<span class="st">&quot;#content-noticia&quot;</span>)<span class="sc">|&gt;</span> <span class="fu">html_text2</span>()</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>links <span class="ot">&lt;-</span> resultado<span class="sc">$</span>link</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfr</span>(links[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="sc">~</span>{</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    pagina <span class="ot">&lt;-</span> <span class="fu">read_html</span>(.x)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">titulo =</span> pagina <span class="sc">|&gt;</span> <span class="fu">html_element</span>(<span class="st">&quot;h1&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">html_text2</span>(),</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> pagina <span class="sc">|&gt;</span> <span class="fu">html_node</span>(<span class="st">&quot;.g-artigo__data-hora&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">html_text2</span>(),</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">texto =</span> pagina  <span class="sc">|&gt;</span> <span class="fu">html_node</span>(<span class="st">&quot;#content-noticia&quot;</span>)<span class="sc">|&gt;</span> <span class="fu">html_text2</span>()</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">|&gt;</span> <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 3
-  titulo                                                             data  texto
-  &lt;chr&gt;                                                              &lt;chr&gt; &lt;chr&gt;
-1 Deputados retomam votações nesta semana no Plenário e nas comissõ… &quot;04/… &quot;Pol…
-2 Câmara declara a perda de mandato de sete deputados federais e co… &quot;31/… &quot;Pol…
-3 Hugo Motta: não podemos apoiar sanção de nações estrangeiras a me… &quot;30/… &quot;Pol…
-4 A Voz do Brasil completa 90 anos marcando a comunicação pública b… &quot;23/… &quot;Ciê…
-5 Sancionado incentivo fiscal a exportações por micro e pequenas em… &quot;29/… &quot;Eco…</code></pre>
+<div class="cell-output-display">
+<div id="kisvbwvskr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kisvbwvskr table {
+font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+#kisvbwvskr thead, #kisvbwvskr tbody, #kisvbwvskr tfoot, #kisvbwvskr tr, #kisvbwvskr td, #kisvbwvskr th {
+border-style: none;
+}
+#kisvbwvskr p {
+margin: 0;
+padding: 0;
+}
+#kisvbwvskr .gt_table {
+display: table;
+border-collapse: collapse;
+line-height: normal;
+margin-left: auto;
+margin-right: auto;
+color: #333333;
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+background-color: #FFFFFF;
+width: auto;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #A8A8A8;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #A8A8A8;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+}
+#kisvbwvskr .gt_caption {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+#kisvbwvskr .gt_title {
+color: #333333;
+font-size: 125%;
+font-weight: initial;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-color: #FFFFFF;
+border-bottom-width: 0;
+}
+#kisvbwvskr .gt_subtitle {
+color: #333333;
+font-size: 85%;
+font-weight: initial;
+padding-top: 3px;
+padding-bottom: 5px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-color: #FFFFFF;
+border-top-width: 0;
+}
+#kisvbwvskr .gt_heading {
+background-color: #FFFFFF;
+text-align: center;
+border-bottom-color: #FFFFFF;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#kisvbwvskr .gt_bottom_border {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#kisvbwvskr .gt_col_headings {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#kisvbwvskr .gt_col_heading {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 6px;
+padding-left: 5px;
+padding-right: 5px;
+overflow-x: hidden;
+}
+#kisvbwvskr .gt_column_spanner_outer {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 4px;
+padding-right: 4px;
+}
+#kisvbwvskr .gt_column_spanner_outer:first-child {
+padding-left: 0;
+}
+#kisvbwvskr .gt_column_spanner_outer:last-child {
+padding-right: 0;
+}
+#kisvbwvskr .gt_column_spanner {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 5px;
+overflow-x: hidden;
+display: inline-block;
+width: 100%;
+}
+#kisvbwvskr .gt_spanner_row {
+border-bottom-style: hidden;
+}
+#kisvbwvskr .gt_group_heading {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+text-align: left;
+}
+#kisvbwvskr .gt_empty_group_heading {
+padding: 0.5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: middle;
+}
+#kisvbwvskr .gt_from_md > :first-child {
+margin-top: 0;
+}
+#kisvbwvskr .gt_from_md > :last-child {
+margin-bottom: 0;
+}
+#kisvbwvskr .gt_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+margin: 10px;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+overflow-x: hidden;
+}
+#kisvbwvskr .gt_stub {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+}
+#kisvbwvskr .gt_stub_row_group {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+vertical-align: top;
+}
+#kisvbwvskr .gt_row_group_first td {
+border-top-width: 2px;
+}
+#kisvbwvskr .gt_row_group_first th {
+border-top-width: 2px;
+}
+#kisvbwvskr .gt_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#kisvbwvskr .gt_first_summary_row {
+border-top-style: solid;
+border-top-color: #D3D3D3;
+}
+#kisvbwvskr .gt_first_summary_row.thick {
+border-top-width: 2px;
+}
+#kisvbwvskr .gt_last_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#kisvbwvskr .gt_grand_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#kisvbwvskr .gt_first_grand_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-style: double;
+border-top-width: 6px;
+border-top-color: #D3D3D3;
+}
+#kisvbwvskr .gt_last_grand_summary_row_top {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: double;
+border-bottom-width: 6px;
+border-bottom-color: #D3D3D3;
+}
+#kisvbwvskr .gt_striped {
+background-color: rgba(128, 128, 128, 0.05);
+}
+#kisvbwvskr .gt_table_body {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#kisvbwvskr .gt_footnotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#kisvbwvskr .gt_footnote {
+margin: 0px;
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#kisvbwvskr .gt_sourcenotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#kisvbwvskr .gt_sourcenote {
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#kisvbwvskr .gt_left {
+text-align: left;
+}
+#kisvbwvskr .gt_center {
+text-align: center;
+}
+#kisvbwvskr .gt_right {
+text-align: right;
+font-variant-numeric: tabular-nums;
+}
+#kisvbwvskr .gt_font_normal {
+font-weight: normal;
+}
+#kisvbwvskr .gt_font_bold {
+font-weight: bold;
+}
+#kisvbwvskr .gt_font_italic {
+font-style: italic;
+}
+#kisvbwvskr .gt_super {
+font-size: 65%;
+}
+#kisvbwvskr .gt_footnote_marks {
+font-size: 75%;
+vertical-align: 0.4em;
+position: initial;
+}
+#kisvbwvskr .gt_asterisk {
+font-size: 100%;
+vertical-align: 0;
+}
+#kisvbwvskr .gt_indent_1 {
+text-indent: 5px;
+}
+#kisvbwvskr .gt_indent_2 {
+text-indent: 10px;
+}
+#kisvbwvskr .gt_indent_3 {
+text-indent: 15px;
+}
+#kisvbwvskr .gt_indent_4 {
+text-indent: 20px;
+}
+#kisvbwvskr .gt_indent_5 {
+text-indent: 25px;
+}
+#kisvbwvskr .katex-display {
+display: inline-flex !important;
+margin-bottom: 0.75em !important;
+}
+#kisvbwvskr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="titulo" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">titulo</th>
+<th id="data" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">data</th>
+<th id="texto" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">texto</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="titulo">Acompanhe</td>
+<td class="gt_row gt_right" headers="data">NA</td>
+<td class="gt_row gt_left" headers="texto">NA</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="titulo">Acompanhe</td>
+<td class="gt_row gt_right" headers="data">NA</td>
+<td class="gt_row gt_left" headers="texto">NA</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="titulo">Acompanhe</td>
+<td class="gt_row gt_right" headers="data">NA</td>
+<td class="gt_row gt_left" headers="texto">NA</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="titulo">Acompanhe</td>
+<td class="gt_row gt_right" headers="data">NA</td>
+<td class="gt_row gt_left" headers="texto">NA</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="titulo">Deputados retomam votações nesta semana no Plenário e nas comissões</td>
+<td class="gt_row gt_right" headers="data">04/08/2025 - 07:40</td>
+<td class="gt_row gt_left" headers="texto">Política e Administração Pública Deputados retomam votações nesta semana no Plenário e nas comissões Sessão do Plenário está marcada para a tarde de terça-feira (5) Compartilhe Versão para impressão versão para impressão em telas pequenas? 0 Comentários 04/08/2025 - 07:40 Bruno Spada/Câmara dos Deputados Plenário durante sessão deliberativa Os deputados retomam as votações no Plenário nesta semana, após duas semanas de recesso. Para a sessão marcada para a terça-feira (5), às 13h55, estão na pauta o projeto que cria o Estatuto do Aprendiz (PL 6461/19), a proposta que trata do crime de assédio sexual no Código Penal Militar (PL 582/15) e a Medida Provisória 1296/25, com medidas para acelerar a concessão de benefícios no INSS. Confira a pauta do Plenário Outros temas devem entrar em debate nas próximas semanas. Está pronto para votação no Plenário o projeto que amplia a faixa de isenção do Imposto de Renda para quem recebe até R$ 5 mil por mês a partir de 2026 (PL 1087/25). A proposta, segundo o presidente da Câmara dos Deputados, Hugo Motta (Republicanos-PB), é prioridade neste segundo semestre. Além da pauta tributária, Hugo Motta destacou que a Câmara seguirá discutindo temas como segurança pública, educação, inteligência artificial e renegociação de dívidas previdenciárias de estados e municípios. Para um dos vice-líderes da oposição, deputado Capitão Alden (PL-BA), a prioridade é o projeto que concede anistia aos participantes dos ataques do 8 de Janeiro de 2023 e demais acusados de golpe de Estado. “Um dos principais focos da oposição será o encaminhamento e a votação do projeto de lei que prevê a anistia, que busca corrigir graves injustiças cometidas contra cidadãos brasileiros que, em sua maioria, apenas exerceram o direito constitucional de se manifestar”, afirmou. Um dos vice-líderes do governo, deputado Jilmar Tatto (PT-SP), entende que existem várias propostas importantes, além da isenção do Imposto de Renda. Ele citou o projeto de taxação dos chamados BBBs (bilionários, bancos e bets) e uma medida provisória, ainda não enviada ao Congresso, que garantirá gás de cozinha gratuito a 17 milhões de famílias. O Plenário da Câmara também deve votar a regulamentação da licença paternidade, conforme determinação do Supremo Tribunal Federal (STF). Congresso No Plenário do Congresso Nacional (sessão conjunta da Câmara e do Senado), os deputados devem analisar o veto do presidente Lula ao aumento do número de deputados federais de 513 para 531. Também deverá ser analisado o projeto da Lei de Diretrizes Orçamentárias (LDO) de 2026 (PLN 2/25) e, no final do ano, o Orçamento do ano que vem. YouTube Reportagem – Silvia Mugnatto Edição – Rachel Librelon Áudio da matéria Ouça esta matéria na Rádio Câmara Baixe</td>
+</tr>
+</tbody>
+</table>
+
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">

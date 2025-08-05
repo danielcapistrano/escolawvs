@@ -87,7 +87,8 @@ resposta  <-
 Aqui vamos converter a resposta em um tabela:
 
 ```{r}
-resposta |> pluck("dados") |> as_tibble()
+library(gt)
+resposta |> pluck("dados") |> as_tibble() |> gt()
 ```
 
 
@@ -136,7 +137,7 @@ install.packages("rvest")
 Aqui vamos indicar o endereço da página que deve ser utilizada como referencia e baixar o conteúdo dessa pagina
 ```{r}
 library(rvest)
-pagina <- read_html("https://www.camara.leg.br")
+pagina <- read_html("https://www.camara.leg.br/noticias")
 
 ```
 
@@ -157,7 +158,7 @@ resultado <-
         )
     })
 
-resultado
+resultado |> gt()
 ```
 
 Agora vamos acessar todos os links coletados na pagina principal e coletar as seguintes informações:
@@ -177,8 +178,9 @@ map_dfr(links[1:5],~{
         titulo = pagina |> html_element("h1") |> html_text2(),
         data = pagina |> html_node(".g-artigo__data-hora") |> html_text2(),
         texto = pagina  |> html_node("#content-noticia")|> html_text2()
-    )
-})
+    ) |> 
+    mutate(texto = substr(texto, 1, 300))
+}) |> gt()
 
 
 ```
