@@ -51,6 +51,6 @@ Os seguintes trabalhos serão mencionados ou discutidos durante a oficina:
 * Snyder, J., Wilson, C., Belisle-Pipon, J.-C., & Crooks, V. (2026). [*Algorithmic Altruism? An Exploratory Study of Generative Artificial Intelligence and Donation-Based Crowdfunding*](https://doi.org/10.1002/nvsm.70057)
 * Than, N., Fan, L., Law, T., Nelson, L. K., & McCall, L. (2025). [*Updating “The Future of Coding”: Qualitative Coding with Generative Large Language Models*](https://doi.org/10.1177/00491241251339188)
 * Westwood, S. J. (2025). [*The potential existential threat of large language models to online survey research*](https://doi.org/10.1073/pnas.2518075122)
-
+* Yasseri, T. (2025). [*The Human in the Machine: Power, Bias, and Governance in AI Societies*](https://hdl.handle.net/2262/112178)
 
 
